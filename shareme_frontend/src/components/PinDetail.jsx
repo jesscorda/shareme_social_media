@@ -4,7 +4,7 @@ import Spinner from "./Spinner";
 import MasonryLayout from "./MasonryLayout";
 import { MdDownloadForOffline } from "react-icons/md";
 import { client, urlFor } from "../client";
-import { pinDetailMorePinQuery, pinDetailQuery, userInfo } from "../utils/data";
+import { getUserInfo, pinDetailMorePinQuery, pinDetailQuery } from "../utils/data";
 import { v4 as uuidv4 } from "uuid";
 
 const PinDetail = () => {
@@ -15,7 +15,7 @@ const PinDetail = () => {
   const [addingComment, setAddingComment] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const user = userInfo;
+  const user = getUserInfo();
 
   const fetchPinDetails = () => {
     setLoading(true);

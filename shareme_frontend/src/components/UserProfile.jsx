@@ -5,7 +5,6 @@ import { googleLogout } from "@react-oauth/google";
 
 import {
   userCreatedPinsQuery,
-  userInfo,
   userQuery,
   userSavedPinsQuery,
 } from "../utils/data";

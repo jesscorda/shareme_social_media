@@ -4,16 +4,16 @@ import { AiTwotoneDelete } from "react-icons/ai";
 import { MdDownloadForOffline } from "react-icons/md";
 import { BsFillArrowUpRightCircleFill } from "react-icons/bs";
 import { v4 as uuidv4 } from "uuid";
-import { userInfo } from "../utils/data";
+import { getUserInfo } from "../utils/data";
 import { useNavigate } from "react-router-dom";
 
 const Pin = ({ postedBy, image, _id, destination, save }) => {
   const [postHovered, setPostHovered] = useState(false);
   const [savingPost, setSavingPost] = useState(false);
-  const user = userInfo;
+  const userInfo = getUserInfo();
   const navigate = useNavigate();
 
-  const alreadySaved = save?.some((item) => item.postedBy?._id === user._id);
+  const alreadySaved = save?.some((item) => item.postedBy?._id === userInfo._id);
 
   const savePin = (id) => {
     if (alreadySaved) return;

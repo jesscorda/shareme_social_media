@@ -5,12 +5,13 @@ import logo from "../assets/logowhite.png";
 import { useNavigate } from "react-router-dom";
 import { client } from "../client";
 import jwt_decode from "jwt-decode";
+import { setUserInfo } from "../utils/data";
 
 const Login = () => {
   const navigate = useNavigate();
   const responseGoogle = async (response) => {
     const decodedResponse = jwt_decode(response.credential);
-    localStorage.setItem("user", JSON.stringify(decodedResponse));
+    setUserInfo(decodedResponse);
     const { name, sub, picture } = decodedResponse;
     const doc = {
       _id: sub,

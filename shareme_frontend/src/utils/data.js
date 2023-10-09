@@ -233,7 +233,21 @@ export const userSavedPinsQuery = (userId) => {
   return query;
 };
 
-export const userInfo =
-  localStorage.getItem("user") !== "undefined"
-    ? JSON.parse(localStorage.getItem("user"))
-    : localStorage.clear();
+export const getUserInfo = () => {
+  const userJSON = localStorage.getItem("user");
+  if (userJSON && userJSON !== "undefined") {
+    return JSON.parse(userJSON);
+  } else {
+    localStorage.clear();
+    return null;
+  }
+};
+
+export const setUserInfo = (userInfo) => {
+    if (userInfo) {
+      const userJSON = JSON.stringify(userInfo);
+      localStorage.setItem("user", userJSON);
+    } else {
+      localStorage.removeItem("user");
+    }
+  };
