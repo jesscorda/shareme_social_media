@@ -26,8 +26,8 @@ const Home = () => {
     scrollRef.current.scrollTo(0, 0);
   });
   return (
-    <div className="flex bg-gray-50 md:flex-row flex-col h-screen transition-height duration-75 ease-out">
-      <div className="hidden md:flex h-screen flex-initial">
+    <div className="flex bg-gray-50 md:flex-row flex-col">
+      <div className="hidden md:inline-block h-screen sticky top-0 w-min-[20rem] overflow-y-auto">
         <Sidebar user={user && user} />
       </div>
       <div className="flex md:hidden flex-row">
@@ -49,8 +49,8 @@ const Home = () => {
           </Link>
         </div>
         {toggleSidebar && (
-          <div className="fixed w-3/5 bg-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in">
-            <div className="absolute w-full flex justify-end items-center p-2">
+          <div className="sticky w-3/5 bg-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in">
+            <div className="absolute w-full flex justify-end items-start p-2">
               <AiFillCloseCircle
                 fontSize={30}
                 className="cursor-pointer"
@@ -61,7 +61,7 @@ const Home = () => {
           </div>
         )}
       </div>
-      <div className="pb-2 flex-1 h-screen" ref={scrollRef}>
+      <div className="pb-2 flex-1" ref={scrollRef}>
         <Routes>
           <Route path="/user-profile/:userId" element={<UserProfile />} />
           <Route path="/*" element={<Pins user={user && user} />} />

@@ -59,12 +59,12 @@ const UserProfile = () => {
   if (!user) return <Spinner message="Loading profile" />;
 
   return (
-    <div className="relative pb-2 h-full justify-center items-center">
+    <div className="relative pb-2 justify-center items-center">
       <div className="flex flex-col pb-5">
         <div className="relative flex flex-col mb-7">
           <div className="flex flex-col justify-center items-center">
             <img
-              className=" w-full h-370 2xl:h-510 shadow-lg object-cover"
+              className="w-full h-270 2xl:h-410 shadow-lg object-cover"
               src="https://source.unsplash.com/1600x900/?nature,photography,technology"
               alt="user-pic"
             />
