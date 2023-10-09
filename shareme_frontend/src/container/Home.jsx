@@ -4,7 +4,7 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import { Link, Route, Routes } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import UserProfile from "../components/UserProfile";
-import { userInfo, userQuery } from "../utils/data";
+import { getUserInfo, userQuery } from "../utils/data";
 import { client } from "../client";
 import Pins from "./Pins";
 import logo from "../assets/logo.png";
@@ -13,6 +13,7 @@ const Home = () => {
   const [toggleSidebar, setToggleSidebar] = useState(false);
   const [user, setUser] = useState();
   const scrollRef = useRef(null);
+  const userInfo = getUserInfo();
 
   useEffect(() => {
     const query = userQuery(userInfo?.sub);
@@ -20,7 +21,7 @@ const Home = () => {
     client.fetch(query).then((data) => {
       setUser(data[0]);
     });
-  }, []);
+  });
 
   useEffect(() => {
     scrollRef.current.scrollTo(0, 0);

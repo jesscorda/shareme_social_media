@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { categories, userInfo } from "../utils/data";
+import { categories, getUserInfo } from "../utils/data";
 import { MdDelete } from "react-icons/md";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import Spinner from "./Spinner";
@@ -12,13 +12,13 @@ const CreatePin = () => {
   const [title, setTitle] = useState("");
   const [destination, setDestination] = useState("");
   const [category, setCategory] = useState("");
-  const [fields, setFields] = useState(false);
+  const [error, setError] = useState(false);
   const [imageAsset, setImageAsset] = useState(null);
   const [wrongImageType, setWrongImageType] = useState(false);
   const [uploadFailed, setUploadFailed] = useState(false);
   const navigate = useNavigate();
 
-  const user = userInfo;
+  const user = getUserInfo();
 
   const uploadImage = (event) => {
     const selectedFile = event.target.files[0];
@@ -51,8 +51,12 @@ const CreatePin = () => {
   };
 
   const savePin = () => {
-    if (!about || !title || !destination || !category || !imageAsset._id)
+    const allFieldFilled =
+      !!about && !!title && !!destination && !!category && !!imageAsset._id;
+    setError(!allFieldFilled);
+    if (!allFieldFilled) {
       return;
+    }
     const doc = {
       _type: "pin",
       title,
@@ -79,7 +83,7 @@ const CreatePin = () => {
 
   return (
     <div className="flex flex-col justify-center items-center mt-5 lg:h-4/5">
-      {fields && (
+      {error && (
         <p className="text-red-500 mb-5 text-xl transition-all duration-150 ease-in ">
           Please fill all fields.
         </p>
