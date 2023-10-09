@@ -14,47 +14,43 @@ const Sidebar = ({ closeToggle, user }) => {
   const isNotActiveStyle =
     "flex items-center px-5 gap-3 text-gray-500 hover:text-black transition-all duration-200 ease-in-out capitalize";
   return (
-    <div className="flex flex-col justify-between h-full w-min-[20rem] hide-scrollbar">
-      <div className="flex flex-col">
-        <Link
+    <aside>
+      <Link
+        to="/"
+        className="flex px-5 gap-2 my-6 pt-1 w-190 items-center"
+        onClick={handleCloseSidebar}
+      >
+        <img src={logo} alt="logo" className="w-full" />
+      </Link>
+      <div className="flex flex-col gap-4">
+        <NavLink
           to="/"
-          className="flex px-5 gap-2 my-6 pt-1 w-190 items-center"
+          className={({ isActive }) =>
+            isActive ? isActiveStyle : isNotActiveStyle
+          }
           onClick={handleCloseSidebar}
         >
-          <img src={logo} alt="logo" className="w-full" />
-        </Link>
-        <div className="flex flex-col gap-4">
+          <RiHomeFill />
+          Home
+        </NavLink>
+        <h3 className="mt-2 px-5 text-base 2xl:text-xl">Discover cateogries</h3>
+        {categories.slice(0, categories.length - 1).map((category, index) => (
           <NavLink
-            to="/"
+            to={`/category/${category.name}`}
             className={({ isActive }) =>
               isActive ? isActiveStyle : isNotActiveStyle
             }
             onClick={handleCloseSidebar}
+            key={category.name}
           >
-            <RiHomeFill />
-            Home
+            <img
+              src={category.image}
+              className="w-8 h-8 rounded-full shadow-sm"
+              alt={category.name}
+            />
+            {category.name}
           </NavLink>
-          <h3 className="mt-2 px-5 text-base 2xl:text-xl">
-            Discover cateogries
-          </h3>
-          {categories.slice(0, categories.length - 1).map((category, index) => (
-            <NavLink
-              to={`/category/${category.name}`}
-              className={({ isActive }) =>
-                isActive ? isActiveStyle : isNotActiveStyle
-              }
-              onClick={handleCloseSidebar}
-              key={category.name}
-            >
-              <img
-                src={category.image}
-                className="w-8 h-8 rounded-full shadow-sm"
-                alt={category.name}
-              />
-              {category.name}
-            </NavLink>
-          ))}
-        </div>
+        ))}
       </div>
       {user && (
         <Link
@@ -71,7 +67,7 @@ const Sidebar = ({ closeToggle, user }) => {
           <IoIosArrowForward />
         </Link>
       )}
-    </div>
+    </aside>
   );
 };
 
