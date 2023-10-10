@@ -13,7 +13,7 @@ const Pin = ({ postedBy, image, _id, destination, save }) => {
   const userInfo = getUserInfo();
   const navigate = useNavigate();
 
-  const alreadySaved = save?.some((item) => item.postedBy?._id === userInfo._id);
+  const alreadySaved = save?.some((item) => item.postedBy?._id === userInfo?.sub);
 
   const savePin = (id) => {
     if (alreadySaved) return;
