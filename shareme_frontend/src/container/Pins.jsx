@@ -7,7 +7,7 @@ const Pins = ({ user }) => {
 
   return (
     <div className="px-2 md:px-5">
-      <div className="bg-gray-50">
+      <div className="bg-gray-50 sticky top-0 pt-1">
         <Navbar
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}

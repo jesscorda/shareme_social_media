@@ -21,14 +21,14 @@ const Home = () => {
     client.fetch(query).then((data) => {
       setUser(data[0]);
     });
-  });
+  }, []);
 
   useEffect(() => {
     scrollRef.current.scrollTo(0, 0);
   });
   return (
     <div className="flex bg-gray-50 md:flex-row flex-col">
-      <div className="hidden md:inline-block h-screen sticky top-0 w-min-[20rem] overflow-y-auto">
+      <div className="hidden md:inline-block h-screen sticky top-0 w-min-[20rem]">
         <Sidebar user={user && user} />
       </div>
       <div className="flex md:hidden flex-row">
@@ -50,7 +50,7 @@ const Home = () => {
           </Link>
         </div>
         {toggleSidebar && (
-          <div className="sticky w-3/5 bg-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in">
+          <div className="fixed w-full bg-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in">
             <div className="absolute w-full flex justify-end items-start p-2">
               <AiFillCloseCircle
                 fontSize={30}

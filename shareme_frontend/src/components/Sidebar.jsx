@@ -22,6 +22,7 @@ const Sidebar = ({ closeToggle, user }) => {
       >
         <img src={logo} alt="logo" className="w-full" />
       </Link>
+      <div className="flex flex-col justify-between h-screen">
       <div className="flex flex-col gap-4">
         <NavLink
           to="/"
@@ -55,7 +56,7 @@ const Sidebar = ({ closeToggle, user }) => {
       {user && (
         <Link
           to={`user-profile/${user._id}`}
-          className="flex my-5 mb-3 gap-2 p-2 items-center bg-white rounded-lg shadow-lg mx-3"
+          className="sticky bottom-0 flex my-5 mb-3 gap-2 p-2 items-center bg-white rounded-lg shadow-lg mx-3"
           onClick={handleCloseSidebar}
         >
           <img
@@ -67,6 +68,7 @@ const Sidebar = ({ closeToggle, user }) => {
           <IoIosArrowForward />
         </Link>
       )}
+      </div>
     </aside>
   );
 };
