@@ -27,7 +27,7 @@ To run the project locally, follow these steps:
 
 ## Additional Information
 
-- [Live Demo](#) (if applicable): Provide a link to a live demo of the project if it's hosted online.
+- [Live Demo](#) : [Link to the live demo](https://sharemedemo.netlify.app/)
 
 ## Screenshots
 
