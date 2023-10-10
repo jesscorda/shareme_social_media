@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { CreatePin, Feed, Navbar, PinDetail, Search } from "../components";
 import { Route, Routes } from "react-router-dom";
 
-const Pins = ({ user }) => {
+const Pins = ({ user, toggleSidebar }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   return (
     <div className="px-2 md:px-5">
-      <div className="bg-gray-50 sticky top-0 pt-1">
+      <div
+        className={`bg-gray-50 sticky top-0 pt-1 ${!toggleSidebar && "z-10"}`}
+      >
         <Navbar
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
